@@ -1,6 +1,7 @@
 var express = require('express');
 const { compile } = require('morgan');
 var router = express.Router();
+var productHelper=require('../mongo-files/product-helpers');
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
@@ -34,5 +35,9 @@ router.get('/add-products',(req,res)=>{
 router.post('/add-products',(req,res)=>{
   console.log(req.body)
   console.log(req.files.Image)
+
+  productHelper.addProduct(req.body,(result)=>{
+    res.render('admin/add-products')
+  })
 })
 module.exports = router;

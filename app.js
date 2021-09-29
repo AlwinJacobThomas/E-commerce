@@ -21,10 +21,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(fileUpload())
 db.connect((err)=>{
-  if (err)
-  console.log('connection error '+err)
-  else
-  console.log('db connected successfully')
+  if(err) console.log('connection error '+err)
+  else console.log('db connected successfully')
 })
 
 app.use('/', userRouter);
